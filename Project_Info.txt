@@ -1,0 +1,16 @@
+** Google Sheet ID\==\> 1DhWqZ99axEgs7i4QQM1DP9_kLWKdez-IhhssYizaDdM
+** Google Sheet Name\==\> NCM-Nijjara-ERP
+----------------------------------------------------------
+** App Script ID\==\> 16YtHjH0MrKGNfSBqbuhFYaaV79-31U_jHTLCiKzWveQ8JE63NurGlNvj
+** App Script Name\==\> NCM-Nijjara-ERP
+----------------------------------------------------------
+** Google Cloud Project Info:
+- Project name\==\> NCM-Nijjara-ERP
+- Project number\==\> 749790232044
+- Project ID\==\> ncm-nijjara-erp
+----------------------------------------------------------
+** Local Directory Path\==\> C:\Users\moham\MK_Work\NCM-Nijjara-ERP
+----------------------------------------------------------
+** GitHub Repo\==\> nijjaraerp/NCM-Nijjara-ERP
+
+
