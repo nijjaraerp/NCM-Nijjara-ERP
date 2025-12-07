@@ -1,0 +1,455 @@
+/**
+ * ENG Data Module - CSV Data Embedded for Google Apps Script
+ * This module contains the complete ENG data from engine_data folder
+ * Embedded as JavaScript objects for Google Apps Script compatibility
+ *
+ * @system NCM-Nijjara-ERP
+ * @module ENG_Data
+ * @version 1.0.0
+ */
+
+/**
+ * ENG Forms data from ENG_Forms.csv
+ */
+const ENG_FORMS_DATA = [
+  ["FORM_ID", "TAB_Section", "Column_Pointer", "Field_Type", "Smart_State", "DYN_Link"],
+  ["FORM_SYS_AddUser", "Account", "EMP_ID", "Smart_Lookup", "EDITABLE", "DYN_EMPLOYEES"],
+  ["FORM_SYS_AddUser", "Account", "USR_Name", "Text", "LOCKED_ON_EDIT", ""],
+  ["FORM_SYS_AddUser", "Account", "EMP_Email", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_AddUser", "Security", "Password_Hash", "Password", "EDITABLE", ""],
+  ["FORM_SYS_AddUser", "Security", "ROL_ID", "Dropdown", "EDITABLE", "DYN_ROLES"],
+  ["FORM_SYS_AddRole", "Role Info", "ROL_Title", "Text", "EDITABLE", ""],
+  ["FORM_SYS_AddRole", "Role Info", "ROL_Notes", "Text", "EDITABLE", ""],
+  ["FORM_SYS_AddDocument", "File Info", "DOC_Entity", "Dropdown", "LOCKED_ON_EDIT", "DD_Attachment_Entities"],
+  ["FORM_SYS_AddDocument", "File Info", "DOC_Label", "Text", "EDITABLE", ""],
+  ["FORM_SYS_AddDocument", "Upload", "DOC_Drive_URL", "Attachment_Area", "EDITABLE", ""],
+  ["FORM_SYS_AddPubHoliday", "Main", "Pub_Holiday_Name", "Text", "EDITABLE", ""],
+  ["FORM_SYS_AddPubHoliday", "Main", "Pub_Holiday_Date", "Date", "EDITABLE", ""],
+  ["FORM_SYS_ViewUser", "Profile", "USR_ID", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewUser", "Profile", "EMP_Name_EN", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewUser", "Activity Log", "AUD_ID", "Related_View", "READ_ONLY", "SYS_Audit_Log"],
+  ["FORM_SYS_ViewUser", "Sessions", "SESS_ID", "Related_View", "READ_ONLY", "SYS_Sessions"],
+  ["FORM_SYS_ViewRole", "Info", "ROL_Title", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewRole", "Permissions", "SRP_ID", "Related_View", "READ_ONLY", "SYS_Role_Permissions"],
+  ["FORM_HRM_AddDepartment", "Main", "DEPT_Name", "Text", "EDITABLE", ""],
+  ["FORM_HRM_AddEmployee", "Personal", "EMP_Name_AR", "Text", "EDITABLE", ""],
+  ["FORM_HRM_AddEmployee", "Personal", "EMP_Name_EN", "Text", "EDITABLE", ""],
+  ["FORM_HRM_AddEmployee", "Personal", "EMP_Mob_Main", "Text", "EDITABLE", ""],
+  ["FORM_HRM_AddEmployee", "Job", "Job_Title", "Dropdown", "EDITABLE", "DD_Job_Titles"],
+  ["FORM_HRM_AddEmployee", "Job", "DEPT_Name", "Dropdown", "EDITABLE", "DYN_DEPTS"],
+  ["FORM_HRM_AddEmployee", "Job", "Hire_Date", "Date", "EDITABLE", ""],
+  ["FORM_HRM_AddEmployee", "Financial", "Basic_Salary", "Number", "EDITABLE", ""],
+  ["FORM_HRM_AddAttendance", "Entry", "EMP_ID", "Smart_Lookup", "EDITABLE", "DYN_EMPLOYEES"],
+  ["FORM_HRM_AddAttendance", "Entry", "ATT_Date", "Date", "EDITABLE", ""],
+  ["FORM_HRM_AddAttendance", "Entry", "ATT_Check_In", "Text", "EDITABLE", ""],
+  ["FORM_HRM_AddAttendance", "Entry", "ATT_Check_Out", "Text", "EDITABLE", ""],
+  ["FORM_HRM_AddLeave", "Request", "EMP_ID", "Smart_Lookup", "EDITABLE", "DYN_EMPLOYEES"],
+  ["FORM_HRM_AddLeave", "Request", "LV_Type", "Dropdown", "EDITABLE", "DD_Leave_Type"],
+  ["FORM_HRM_AddLeave", "Request", "LV_Start_Date", "Date", "EDITABLE", ""],
+  ["FORM_HRM_AddLeave", "Request", "LV_End_Date", "Date", "EDITABLE", ""],
+  ["FORM_HRM_AddAdvance", "Request", "EMP_ID", "Smart_Lookup", "EDITABLE", "DYN_EMPLOYEES"],
+  ["FORM_HRM_AddAdvance", "Request", "ADV_Amnt", "Number", "EDITABLE", ""],
+  ["FORM_HRM_AddAdvance", "Request", "ADV_Issue_Date", "Date", "EDITABLE", ""],
+  ["FORM_HRM_AddOverTime", "Entry", "EMP_ID", "Smart_Lookup", "EDITABLE", "DYN_EMPLOYEES"],
+  ["FORM_HRM_AddOverTime", "Entry", "ATT_Date", "Date", "EDITABLE", ""],
+  ["FORM_HRM_AddOverTime", "Entry", "OT_Amnt", "Number", "EDITABLE", ""],
+  ["FORM_HRM_AddDeduction", "Entry", "EMP_ID", "Smart_Lookup", "EDITABLE", "DYN_EMPLOYEES"],
+  ["FORM_HRM_AddDeduction", "Entry", "DEDCT_Amnt", "Number", "EDITABLE", ""],
+  ["FORM_HRM_AddDeduction", "Entry", "DEDCT_Date", "Date", "EDITABLE", ""],
+  ["FORM_HRM_ViewEmployee", "Profile", "EMP_Name_AR", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewEmployee", "Profile", "Job_Title", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewEmployee", "Attendance", "ATT_ID", "Related_View", "READ_ONLY", "HRM_Attendance"],
+  ["FORM_HRM_ViewEmployee", "Leaves", "LV_ID", "Related_View", "READ_ONLY", "HRM_Leave"],
+  ["FORM_HRM_ViewEmployee", "Financials", "PAY_ID", "Related_View", "READ_ONLY", "FIN_HRM_Payroll"],
+  ["FORM_HRM_ViewEmployee", "Custody", "CSTD_ID", "Related_View", "READ_ONLY", "FIN_Custody"],
+  ["FORM_PRJ_AddMain", "Project Info", "PRJ_Name", "Text", "EDITABLE", ""],
+  ["FORM_PRJ_AddMain", "Project Info", "CLI_ID", "Smart_Lookup", "EDITABLE", "DYN_CLIENTS"],
+  ["FORM_PRJ_AddMain", "Project Info", "PRJ_Type", "Dropdown", "EDITABLE", "DD_Project_Type"],
+  ["FORM_PRJ_AddMain", "Planning", "Plan_Start_Date", "Date", "EDITABLE", ""],
+  ["FORM_PRJ_AddMain", "Planning", "PRJ_Budget", "Number", "EDITABLE", ""],
+  ["FORM_PRJ_AddClient", "Info", "CLI_Name", "Text", "EDITABLE", ""],
+  ["FORM_PRJ_AddClient", "Info", "CLI_Mob_1", "Text", "EDITABLE", ""],
+  ["FORM_PRJ_AddClient", "Info", "CLI_Email", "Email", "EDITABLE", ""],
+  ["FORM_PRJ_AddTask", "Task Info", "PRJ_ID", "Smart_Lookup", "LOCKED_ON_EDIT", "DYN_PROJECTS"],
+  ["FORM_PRJ_AddTask", "Task Info", "TSK_Name", "Text", "EDITABLE", ""],
+  ["FORM_PRJ_AddTask", "Task Info", "TSK_Priority", "Dropdown", "EDITABLE", "DD_Priority"],
+  ["FORM_PRJ_AddTask", "Assignment", "EMP_ID", "Smart_Lookup", "EDITABLE", "DYN_EMPLOYEES"],
+  ["FORM_PRJ_AddMaterial", "Item", "MAT_Name", "Text", "EDITABLE", ""],
+  ["FORM_PRJ_AddMaterial", "Item", "Default_Unit", "Dropdown", "EDITABLE", "DD_Units"],
+  ["FORM_PRJ_ViewMain", "Overview", "PRJ_Name", "Text", "READ_ONLY", ""],
+  ["FORM_PRJ_ViewMain", "Overview", "PRJ_Budget", "Number", "READ_ONLY", ""],
+  ["FORM_PRJ_ViewMain", "Tasks", "TSK_ID", "Related_View", "READ_ONLY", "PRJ_Tasks"],
+  ["FORM_PRJ_ViewMain", "Direct Costs", "DiEXP_ID", "Related_View", "READ_ONLY", "FIN_DirectExpenses"],
+  ["FORM_PRJ_ViewMain", "Allocated Costs", "ALO_TM_ID", "Related_View", "READ_ONLY", "PRJ_IndirExp_Time_Alloc"],
+  ["FORM_PRJ_ViewMain", "Revenue", "REV_ID", "Related_View", "READ_ONLY", "FIN_PRJ_Revenue"],
+  ["FORM_PRJ_ViewClient", "Profile", "CLI_Name", "Text", "READ_ONLY", ""],
+  ["FORM_PRJ_ViewClient", "Projects", "PRJ_ID", "Related_View", "READ_ONLY", "PRJ_Main"],
+  ["FORM_FIN_AddDirectExpense", "Expense Info", "PRJ_ID", "Smart_Lookup", "EDITABLE", "DYN_PROJECTS"],
+  ["FORM_FIN_AddDirectExpense", "Expense Info", "DiEXP_Date", "Date", "EDITABLE", ""],
+  ["FORM_FIN_AddDirectExpense", "Details", "MAT_ID", "Smart_Lookup", "EDITABLE", "DYN_MATERIALS"],
+  ["FORM_FIN_AddDirectExpense", "Details", "DiEXP_Total_VAT_Inc", "Number", "EDITABLE", ""],
+  ["FORM_FIN_AddDirectExpense", "Payment", "DiEXP_Pay_Methd", "Dropdown", "EDITABLE", "DD_Payment_Method"],
+  ["FORM_FIN_AddDirectExpense", "Payment", "CSTD_ID", "Smart_Lookup", "EDITABLE", "DYN_CUSTODY"],
+  ["FORM_FIN_AddInDirectExpense_Time", "Main", "InDiEXP_TM_Catg", "Dropdown", "EDITABLE", "DD_Expense_Category"],
+  ["FORM_FIN_AddInDirectExpense_Time", "Main", "InDiEXP_Start", "Date", "EDITABLE", ""],
+  ["FORM_FIN_AddInDirectExpense_Time", "Main", "InDiEXP_End", "Date", "EDITABLE", ""],
+  ["FORM_FIN_AddInDirectExpense_NoTime", "Main", "InDiEXP_NT_Catg", "Dropdown", "EDITABLE", "DD_Expense_Category"],
+  ["FORM_FIN_AddInDirectExpense_NoTime", "Main", "Depreciation_Start_Date", "Date", "EDITABLE", ""],
+  ["FORM_FIN_AddPRJ_Revenue", "Revenue Info", "PRJ_ID", "Smart_Lookup", "EDITABLE", "DYN_PROJECTS"],
+  ["FORM_FIN_AddPRJ_Revenue", "Revenue Info", "REV_Date", "Date", "EDITABLE", ""],
+  ["FORM_FIN_AddPRJ_Revenue", "Revenue Info", "REV_Amnt", "Number", "EDITABLE", ""],
+  ["FORM_FIN_AddCustody", "Info", "EMP_ID", "Smart_Lookup", "EDITABLE", "DYN_EMPLOYEES"],
+  ["FORM_FIN_AddCustody", "Info", "CSTD_Amnt", "Number", "EDITABLE", ""],
+  ["FORM_FIN_AddHRM_Payroll", "Info", "EMP_ID", "Smart_Lookup", "EDITABLE", "DYN_EMPLOYEES"],
+  ["FORM_FIN_AddHRM_Payroll", "Info", "PAY_Net_Pay", "Number", "EDITABLE", ""],
+  ["FORM_FIN_ViewCustody", "Details", "EMP_Name", "Text", "READ_ONLY", ""],
+  ["FORM_FIN_ViewCustody", "Details", "CSTD_Amnt", "Number", "READ_ONLY", ""],
+  ["FORM_SYS_AddPermission", "Main", "PRM_Name", "Text", "EDITABLE", ""],
+  ["FORM_SYS_AddPermission", "Main", "PRM_Catg", "Dropdown", "EDITABLE", "DD_Permission_Categories"],
+  ["FORM_SYS_AddPermission", "Main", "PRM_Notes", "Text", "EDITABLE", ""],
+  ["FORM_SYS_AddRolePermission", "Main", "ROL_ID", "Dropdown", "EDITABLE", "DYN_ROLES"],
+  ["FORM_SYS_AddRolePermission", "Main", "PRM_ID", "Dropdown", "EDITABLE", "DYN_PERMISSIONS"],
+  ["FORM_SYS_AddRolePermission", "Main", "SRP_Scope", "Dropdown", "EDITABLE", "DD_Scopes"],
+  ["FORM_SYS_AddRolePermission", "Main", "SRP_Is_Allowed", "Dropdown", "EDITABLE", "DD_Boolean"],
+  ["FORM_SYS_ViewPermission", "Details", "PRM_Name", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewPermission", "Details", "PRM_Catg", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewPermission", "Details", "PRM_Notes", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewRolePermission", "Details", "ROL_ID", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewRolePermission", "Details", "PRM_ID", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewRolePermission", "Details", "SRP_Scope", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewAuditLog", "Log Info", "USR_Name", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewAuditLog", "Log Info", "USR_Action", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewAuditLog", "Log Info", "ACT_Description", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewAuditLog", "Log Info", "AUD_Time_Stamp", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewSession", "Session Info", "USR_ID", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewSession", "Session Info", "SESS_Status", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewSession", "Session Info", "SESS_Start_At", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewDocument", "File Info", "DOC_Label", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewDocument", "File Info", "DOC_Drive_URL", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewPubHoliday", "Info", "Pub_Holiday_Name", "Text", "READ_ONLY", ""],
+  ["FORM_SYS_ViewPubHoliday", "Info", "Pub_Holiday_Date", "Date", "READ_ONLY", ""],
+  ["FORM_HRM_ViewDepartment", "Info", "DEPT_Name", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewDepartment", "Employees", "EMP_ID", "Related_View", "READ_ONLY", "HRM_Employees"],
+  ["FORM_HRM_ViewAttendance", "Details", "EMP_Name_AR", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewAttendance", "Details", "ATT_Date", "Date", "READ_ONLY", ""],
+  ["FORM_HRM_ViewAttendance", "Details", "ATT_Status", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewAttendance", "Details", "ATT_Check_In", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewAttendance", "Details", "ATT_Check_Out", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewLeave", "Request Info", "EMP_Name_AR", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewLeave", "Request Info", "LV_Type", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewLeave", "Request Info", "LV_Start_Date", "Date", "READ_ONLY", ""],
+  ["FORM_HRM_ViewLeave", "Request Info", "LV_End_Date", "Date", "READ_ONLY", ""],
+  ["FORM_HRM_ViewAdvance", "Info", "EMP_Name_AR", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewAdvance", "Info", "ADV_Amnt", "Number", "READ_ONLY", ""],
+  ["FORM_HRM_ViewAdvance", "Info", "ADV_Status", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewOverTime", "Info", "EMP_Name_AR", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewOverTime", "Info", "OT_Amnt", "Number", "READ_ONLY", ""],
+  ["FORM_HRM_ViewDeduction", "Info", "EMP_Name_AR", "Text", "READ_ONLY", ""],
+  ["FORM_HRM_ViewDeduction", "Info", "DEDCT_Amnt", "Number", "READ_ONLY", ""],
+  ["FORM_PRJ_ViewTask", "Task Info", "TSK_Name", "Text", "READ_ONLY", ""],
+  ["FORM_PRJ_ViewTask", "Task Info", "TSK_Priority", "Text", "READ_ONLY", ""],
+  ["FORM_PRJ_ViewTask", "Task Info", "TSK_Status", "Text", "READ_ONLY", ""],
+  ["FORM_PRJ_ViewTask", "Assigned To", "EMP_ID", "Text", "READ_ONLY", ""],
+  ["FORM_PRJ_ViewMaterial", "Item Info", "MAT_Name", "Text", "READ_ONLY", ""],
+  ["FORM_PRJ_ViewMaterial", "Item Info", "Default_Unit", "Text", "READ_ONLY", ""],
+  ["FORM_FIN_ViewDirectExpense", "Info", "PRJ_Name", "Text", "READ_ONLY", ""],
+  ["FORM_FIN_ViewDirectExpense", "Info", "DiEXP_Total_VAT_Inc", "Number", "READ_ONLY", ""],
+  ["FORM_FIN_ViewDirectExpense", "Info", "DiEXP_Date", "Date", "READ_ONLY", ""],
+  ["FORM_FIN_ViewInDirectExpense_Time", "Info", "InDiEXP_TM_Catg", "Text", "READ_ONLY", ""],
+  ["FORM_FIN_ViewInDirectExpense_Time", "Info", "InDiEXP_Start", "Date", "READ_ONLY", ""],
+  ["FORM_FIN_ViewInDirectExpense_Time", "Info", "InDiEXP_End", "Date", "READ_ONLY", ""],
+  ["FORM_FIN_ViewInDirectExpense_NoTime", "Info", "InDiEXP_NT_Catg", "Text", "READ_ONLY", ""],
+  ["FORM_FIN_ViewInDirectExpense_NoTime", "Info", "Depreciation_Start_Date", "Date", "READ_ONLY", ""],
+  ["FORM_FIN_ViewPRJ_Revenue", "Info", "PRJ_Name", "Text", "READ_ONLY", ""],
+  ["FORM_FIN_ViewPRJ_Revenue", "Info", "REV_Amnt", "Number", "READ_ONLY", ""],
+  ["FORM_FIN_ViewPRJ_Revenue", "Info", "REV_Date", "Date", "READ_ONLY", ""],
+  ["FORM_FIN_ViewHRM_Payroll", "Info", "EMP_Name", "Text", "READ_ONLY", ""],
+  ["FORM_FIN_ViewHRM_Payroll", "Info", "PAY_Net_Pay", "Number", "READ_ONLY", ""]
+];
+
+/**
+ * ENG Views data from ENG_Views.csv
+ */
+const ENG_VIEWS_DATA = [
+  ["VIEW_ID", "View_Title", "Source_Sheet"],
+  ["VIEW_SYS_Users", "قائمة المستخدمين", "SYS_Users"],
+  ["VIEW_SYS_Roles", "قائمة الأدوار", "SYS_Roles"],
+  ["VIEW_SYS_Permissions", "قائمة الصلاحيات", "SYS_Permissions"],
+  ["VIEW_SYS_RolePermissions", "تعيينات الصلاحيات", "SYS_Role_Permissions"],
+  ["VIEW_SYS_AuditLog", "سجل التدقيق", "SYS_Audit_Log"],
+  ["VIEW_SYS_Sessions", "جلسات المستخدمين", "SYS_Sessions"],
+  ["VIEW_SYS_Documents", "المستندات", "SYS_Documents"],
+  ["VIEW_SYS_PubHolidays", "العطلات الرسمية", "SYS_PubHolidays"],
+  ["VIEW_HRM_Departments", "الأقسام", "HRM_Departments"],
+  ["VIEW_HRM_Employees", "الموظفون", "HRM_Employees"],
+  ["VIEW_HRM_Attendance", "سجل الحضور", "HRM_Attendance"],
+  ["VIEW_HRM_Leave", "الإجازات", "HRM_Leave"],
+  ["VIEW_HRM_Advances", "السلف", "HRM_Advances"],
+  ["VIEW_HRM_OverTime", "الوقت الإضافي", "HRM_OverTime"],
+  ["VIEW_HRM_Deductions", "الخصومات", "HRM_Deductions"],
+  ["VIEW_PRJ_Main", "المشاريع", "PRJ_Main"],
+  ["VIEW_PRJ_Clients", "العملاء", "PRJ_Clients"],
+  ["VIEW_PRJ_Tasks", "مهام المشاريع", "PRJ_Tasks"],
+  ["VIEW_PRJ_Material", "المواد والخامات", "PRJ_Material"],
+  ["VIEW_FIN_DirectExpenses", "المصروفات المباشرة", "FIN_DirectExpenses"],
+  ["VIEW_FIN_InDirectExpenses_Time", "مصروفات (زمنية)", "FIN_InDirectExpenses_Time"],
+  ["VIEW_FIN_InDirectExpenses_NoTime", "مصروفات (ثابتة)", "FIN_InDirectExpenses_NoTime"],
+  ["VIEW_FIN_PRJ_Revenue", "إيرادات المشاريع", "FIN_PRJ_Revenue"],
+  ["VIEW_FIN_Custody", "العهد المالية", "FIN_Custody"],
+  ["VIEW_FIN_HRM_Payroll", "مسير الرواتب", "FIN_HRM_Payroll"],
+  ["VIEW_SYS_Documents", "المستندات", "SYS_Documents"],
+  ["VIEW_SYS_PubHolidays", "العطلات الرسمية", "SYS_PubHolidays"]
+];
+
+/**
+ * ENG Dropdowns data from ENG_Dropdowns.csv
+ */
+const ENG_DROPDOWNS_DATA = [
+  ["DD_ID", "DD_EN", "DD_AR", "DD_Is_Active", "DD_Sort_Order"],
+  ["DD_YesNo", "Yes", "نعم", "TRUE", "1"],
+  ["DD_YesNo", "No", "لا", "TRUE", "2"],
+  ["DD_Boolean", "TRUE", "صحيح", "TRUE", "1"],
+  ["DD_Boolean", "FALSE", "خطأ", "TRUE", "2"],
+  ["DD_User_Status", "Active", "نشط", "TRUE", "1"],
+  ["DD_User_Status", "Inactive", "غير نشط", "TRUE", "2"],
+  ["DD_Gender", "Male", "ذكر", "TRUE", "1"],
+  ["DD_Gender", "Female", "أنثى", "TRUE", "2"],
+  ["DD_Project_Status", "New", "جديد", "TRUE", "1"],
+  ["DD_Project_Status", "Active", "جاري التنفيذ", "TRUE", "2"],
+  ["DD_Project_Status", "Completed", "مكتمل", "TRUE", "3"],
+  ["DD_Project_Status", "On_Hold", "معلق", "TRUE", "4"],
+  ["DD_Project_Type", "Internal", "داخلي", "TRUE", "1"],
+  ["DD_Project_Type", "Client", "خارجي", "TRUE", "2"],
+  ["DD_Priority", "High", "عالية", "TRUE", "1"],
+  ["DD_Priority", "Medium", "متوسطة", "TRUE", "2"],
+  ["DD_Priority", "Low", "منخفضة", "TRUE", "3"],
+  ["DD_Task_Status", "Pending", "قيد الانتظار", "TRUE", "1"],
+  ["DD_Task_Status", "In_Progress", "جاري العمل", "TRUE", "2"],
+  ["DD_Task_Status", "Completed", "مكتملة", "TRUE", "3"],
+  ["DD_Payment_Method", "Cash", "نقدية", "TRUE", "1"],
+  ["DD_Payment_Method", "Bank", "تحويل بنكي", "TRUE", "2"],
+  ["DD_Payment_Method", "Cheque", "شيك", "TRUE", "3"],
+  ["DD_Payment_Method", "Custody", "عهدة موظف", "TRUE", "4"],
+  ["DD_Payment_Status", "Paid", "مدفوع", "TRUE", "1"],
+  ["DD_Payment_Status", "Pending", "معلق", "TRUE", "2"],
+  ["DD_Expense_Category", "Rent", "إيجار", "TRUE", "1"],
+  ["DD_Expense_Category", "Utilities", "مرافق", "TRUE", "2"],
+  ["DD_Expense_Category", "Maintenance", "صيانة", "TRUE", "3"],
+  ["DD_Expense_Category", "Purchases", "مشتريات", "TRUE", "4"],
+  ["DD_Leave_Type", "Annual", "سنوية", "TRUE", "1"],
+  ["DD_Leave_Type", "Sick", "مرضية", "TRUE", "2"],
+  ["DD_Leave_Type", "Unpaid", "بدون راتب", "TRUE", "3"],
+  ["DD_Job_Titles", "Manager", "مدير", "TRUE", "1"],
+  ["DD_Job_Titles", "Engineer", "مهندس", "TRUE", "2"],
+  ["DD_Job_Titles", "Accountant", "محاسب", "TRUE", "3"],
+  ["DD_Job_Titles", "Worker", "عامل", "TRUE", "4"],
+  ["DD_Units", "Piece", "قطعة", "TRUE", "1"],
+  ["DD_Units", "KG", "كجم", "TRUE", "2"],
+  ["DD_Units", "Meter", "متر", "TRUE", "3"],
+  ["DD_MFA_Status", "Enabled", "مُفعّل", "TRUE", "1"],
+  ["DD_MFA_Status", "Disabled", "غير مُفعّل", "TRUE", "2"],
+  ["DD_Permission_Categories", "USERS", "المستخدمون", "TRUE", "1"],
+  ["DD_Permission_Categories", "SECURITY", "الأمان", "TRUE", "2"],
+  ["DD_Permission_Categories", "AUDIT", "التدقيق", "TRUE", "3"],
+  ["DD_Scopes", "GLOBAL", "عالمي", "TRUE", "1"],
+  ["DD_Scopes", "DEPARTMENT", "الإدارة", "TRUE", "2"],
+  ["DD_Scopes", "SELF", "ذاتي", "TRUE", "3"],
+  ["DD_Scopes", "LIMITED", "محدود", "TRUE", "4"],
+  ["DD_Attachment_Entities", "Users", "المستخدمون", "TRUE", "1"],
+  ["DD_Attachment_Entities", "Roles", "الأدوار", "TRUE", "2"],
+  ["DD_Attachment_Entities", "Permissions", "الأذونات", "TRUE", "3"],
+  ["DD_Attachment_Entities", "Role_Permissions", "أذونات_الأدوار", "TRUE", "4"],
+  ["DD_Export_Formats", "CSV", "CSV", "TRUE", "1"],
+  ["DD_Export_Formats", "XLSX", "XLSX", "TRUE", "2"],
+  ["DD_Export_Formats", "JSON", "JSON", "TRUE", "3"],
+  ["DD_Contract_Types", "Full_Time", "دوام كامل", "TRUE", "1"],
+  ["DD_Contract_Types", "Part_Time", "دوام جزئي", "TRUE", "2"],
+  ["DD_Contract_Types", "Contract", "عقد", "TRUE", "3"],
+  ["DD_Contract_Types", "Temporary", "مؤقت", "TRUE", "4"],
+  ["DD_Contract_Types", "Internship", "تدريب", "TRUE", "5"],
+  ["DD_Cost_Categories", "Labor", "تكاليف العمالة", "TRUE", "1"],
+  ["DD_Cost_Categories", "Materials", "مواد", "TRUE", "2"],
+  ["DD_Cost_Categories", "Equipment", "معدات", "TRUE", "3"],
+  ["DD_Cost_Categories", "Misc", "أخرى", "TRUE", "4"],
+  ["DD_Indirect_Frequency", "Monthly", "شهري", "TRUE", "1"],
+  ["DD_Indirect_Frequency", "Quarterly", "ربع سنوي", "TRUE", "2"],
+  ["DD_Indirect_Frequency", "Yearly", "سنوي", "TRUE", "3"],
+  ["DD_Indirect_Frequency", "One-time", "مرة واحدة", "TRUE", "4"],
+  ["DD_Revenue_Type", "Project", "مشروع", "TRUE", "1"],
+  ["DD_Revenue_Type", "General", "عام", "TRUE", "2"],
+  ["DD_Account", "Assets", "الأصول", "TRUE", "1"],
+  ["DD_Account", "Liabilities", "الخصوم", "TRUE", "2"],
+  ["DD_Account", "Equity", "حقوق الملكية", "TRUE", "3"],
+  ["DD_Account", "Revenue", "الإيرادات", "TRUE", "4"],
+  ["DD_Account", "Expenses", "المصروفات", "TRUE", "5"],
+  ["DD_Account", "Cash", "النقد", "TRUE", "6"],
+  ["DD_Account", "Bank", "البنك", "TRUE", "7"],
+  ["DD_Custody_Status", "Open", "مفتوحة", "TRUE", "1"],
+  ["DD_Custody_Status", "Closed", "مغلقة", "TRUE", "2"],
+  ["DD_Custody_Status", "Overdue", "متأخرة", "TRUE", "3"],
+  ["DD_Marital_Status", "Single", "أعزب", "TRUE", "1"],
+  ["DD_Marital_Status", "Married", "متزوج", "TRUE", "2"],
+  ["DD_Marital_Status", "Divorced", "مطلق", "TRUE", "3"],
+  ["DD_Marital_Status", "Widowed", "أرمل", "TRUE", "4"],
+  ["DD_Military_Status", "Completed", "أنهى الخدمة", "TRUE", "1"],
+  ["DD_Military_Status", "Exempted", "معفى", "TRUE", "2"],
+  ["DD_Military_Status", "In_Progress", "يؤدي الخدمة", "TRUE", "3"],
+  ["DD_Military_Status", "Not_Applicable", "غير مطلوب", "TRUE", "4"],
+  ["DD_Employee_Status", "Active", "نشط", "TRUE", "1"],
+  ["DD_Employee_Status", "Probation", "تحت التجربة", "TRUE", "2"],
+  ["DD_Employee_Status", "On_Leave", "في إجازة", "TRUE", "3"],
+  ["DD_Employee_Status", "Terminated", "منتهي الخدمة", "TRUE", "4"],
+  ["DD_Attendance_Status", "Present", "حاضر", "TRUE", "1"],
+  ["DD_Attendance_Status", "Absent", "غائب", "TRUE", "2"],
+  ["DD_Attendance_Status", "Late", "متأخر", "TRUE", "3"],
+  ["DD_Attendance_Status", "On_Leave", "في إجازة", "TRUE", "4"],
+  ["DD_Attendance_Status", "Remote", "عمل عن بُعد", "TRUE", "5"],
+  ["DD_Leave_Status", "Pending", "قيد المراجعة", "TRUE", "1"],
+  ["DD_Leave_Status", "Approved", "مقبولة", "TRUE", "2"],
+  ["DD_Leave_Status", "Rejected", "مرفوضة", "TRUE", "3"],
+  ["DD_Leave_Status", "Cancelled", "ملغاة", "TRUE", "4"],
+  ["DD_Advance_Status", "Pending", "قيد الاعتماد", "TRUE", "1"],
+  ["DD_Advance_Status", "Approved", "معتمدة", "TRUE", "2"],
+  ["DD_Advance_Status", "Disbursed", "مصروفة", "TRUE", "3"],
+  ["DD_Advance_Status", "Settled", "مقفلة", "TRUE", "4"],
+  ["DD_Payroll_Status", "Draft", "مسودة", "TRUE", "1"],
+  ["DD_Payroll_Status", "Submitted", "قيد المراجعة", "TRUE", "2"],
+  ["DD_Payroll_Status", "Approved", "معتمد", "TRUE", "3"],
+  ["DD_Payroll_Status", "Paid", "مدفوع", "TRUE", "4"]
+];
+
+/**
+ * ENG Buttons data from ENG_Buttons.csv
+ */
+const ENG_BUTTONS_DATA = [
+  ["BTN_ID", "BTN_Label", "BTN_Type", "BTN_Description"],
+  ["BTN_Reset_Pass", "إعادة تعيين كلمة السر", "ROW_ACTION", "Sends reset email"],
+  ["BTN_Bulk_Activate", "تفعيل المحدد", "BULK_ACTION", "Activates selected users"],
+  ["BTN_Bulk_Deactivate", "تعطيل المحدد", "BULK_ACTION", "Deactivates selected users"],
+  ["BTN_Approve_Leave", "قبول الإجازة", "ROW_ACTION", "Approves request"],
+  ["BTN_Reject_Leave", "رفض الإجازة", "ROW_ACTION", "Rejects request"],
+  ["BTN_PRJ_Start", "بدء المشروع", "FORM_ACTION", "Changes status to Active"],
+  ["BTN_PRJ_Close", "إغلاق المشروع", "FORM_ACTION", "Changes status to Completed"],
+  ["BTN_Task_Done", "إتمام المهمة", "ROW_ACTION", "Marks task as Done"],
+  ["BTN_PRJ_Hold", "تعليق العمل", "ROW_ACTION", "Sets project status to On Hold"],
+  ["BTN_Approve_Adv", "صرف السلفة", "ROW_ACTION", "Approves advance request"],
+  ["BTN_Reject_Adv", "رفض السلفة", "ROW_ACTION", "Rejects advance request"],
+  ["BTN_Kill_Session", "إنهاء الجلسة", "ROW_ACTION", "Force logout user session"],
+  ["BTN_Download_Doc", "تحميل الملف", "ROW_ACTION", "Download attachment file"],
+  ["BTN_Print_Invoice", "طباعة الفاتورة", "ROW_ACTION", "Print revenue invoice"],
+  ["BTN_Approve_Payroll", "اعتماد الراتب", "ROW_ACTION", "Approve payroll record"],
+  ["BTN_Print_Payroll", "طباعة كشف الراتب", "ROW_ACTION", "Print salary slip"]
+];
+
+/**
+ * ENG Settings data from ENG_Settings.csv
+ */
+const ENG_SETTINGS_DATA = [
+  ["Setting_Key", "Setting_Value", "Description_EN", "Updated_By", "Updated_At"],
+  ["FORM_MASTER:FORM_SYS_AddUser", "SYS_Users", "Add User", "", ""],
+  ["FORM_MASTER:FORM_SYS_AddRole", "SYS_Roles", "Add Role", "", ""],
+  ["FORM_MASTER:FORM_SYS_AddPermission", "SYS_Permissions", "Add Perm", "", ""],
+  ["FORM_MASTER:FORM_SYS_AddRolePermission", "SYS_Role_Permissions", "Add Role Perm", "", ""],
+  ["FORM_MASTER:FORM_SYS_AddDocument", "SYS_Documents", "Upload Doc", "", ""],
+  ["FORM_MASTER:FORM_SYS_AddPubHoliday", "SYS_PubHolidays", "Add Holiday", "", ""],
+  ["FORM_MASTER:FORM_HRM_AddDepartment", "HRM_Departments", "Add Dept", "", ""],
+  ["FORM_MASTER:FORM_HRM_AddEmployee", "HRM_Employees", "Add Employee", "", ""],
+  ["FORM_MASTER:FORM_HRM_AddAttendance", "HRM_Attendance", "Manual Attendance", "", ""],
+  ["FORM_MASTER:FORM_HRM_AddLeave", "HRM_Leave", "Request Leave", "", ""],
+  ["FORM_MASTER:FORM_HRM_AddAdvance", "HRM_Advances", "Request Advance", "", ""],
+  ["FORM_MASTER:FORM_HRM_AddOverTime", "HRM_OverTime", "Record OT", "", ""],
+  ["FORM_MASTER:FORM_HRM_AddDeduction", "HRM_Deductions", "Record Deduction", "", ""],
+  ["FORM_MASTER:FORM_PRJ_AddMain", "PRJ_Main", "Create Project", "", ""],
+  ["FORM_MASTER:FORM_PRJ_AddClient", "PRJ_Clients", "Add Client", "", ""],
+  ["FORM_MASTER:FORM_PRJ_AddTask", "PRJ_Tasks", "Add Task", "", ""],
+  ["FORM_MASTER:FORM_PRJ_AddMaterial", "PRJ_Material", "Add Material", "", ""],
+  ["FORM_MASTER:FORM_FIN_AddDirectExpense", "FIN_DirectExpenses", "Direct Exp", "", ""],
+  ["FORM_MASTER:FORM_FIN_AddInDirectExpense_Time", "FIN_InDirectExpenses_Time", "Indirect Exp Time", "", ""],
+  ["FORM_MASTER:FORM_FIN_AddInDirectExpense_NoTime", "FIN_InDirectExpenses_NoTime", "Indirect Exp Fixed", "", ""],
+  ["FORM_MASTER:FORM_FIN_AddPRJ_Revenue", "FIN_PRJ_Revenue", "Add Revenue", "", ""],
+  ["FORM_MASTER:FORM_FIN_AddCustody", "FIN_Custody", "Issue Custody", "", ""],
+  ["FORM_MASTER:FORM_FIN_AddHRM_Payroll", "FIN_HRM_Payroll", "Payroll", "", ""],
+  ["FORM_MASTER:FORM_SYS_AddPermission", "SYS_Permissions", "Define Permission", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_SYS_AddRolePermission", "SYS_Role_Permissions", "Assign Permission", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_SYS_ViewPermission", "SYS_Permissions", "View Permission", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_SYS_ViewRolePermission", "SYS_Role_Permissions", "View Role Perm", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_SYS_ViewAuditLog", "SYS_Audit_Log", "View Log", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_SYS_ViewSession", "SYS_Sessions", "View Session", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_SYS_ViewDocument", "SYS_Documents", "View Doc", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_SYS_ViewPubHoliday", "SYS_PubHolidays", "View Holiday", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_HRM_ViewDepartment", "HRM_Departments", "View Dept", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_HRM_ViewAttendance", "HRM_Attendance", "View Attendance", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_HRM_ViewLeave", "HRM_Leave", "View Leave", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_HRM_ViewAdvance", "HRM_Advances", "View Advance", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_HRM_ViewOverTime", "HRM_OverTime", "View OT", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_HRM_ViewDeduction", "HRM_Deductions", "View Deduction", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_PRJ_ViewTask", "PRJ_Tasks", "View Task", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_PRJ_ViewMaterial", "PRJ_Material", "View Material", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_FIN_ViewDirectExpense", "FIN_DirectExpenses", "View Direct Exp", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_FIN_ViewInDirectExpense_Time", "FIN_InDirectExpenses_Time", "View Indirect Time", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_FIN_ViewInDirectExpense_NoTime", "FIN_InDirectExpenses_NoTime", "View Indirect NoTime", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_FIN_ViewPRJ_Revenue", "FIN_PRJ_Revenue", "View Revenue", "system", "12/4/2025"],
+  ["FORM_MASTER:FORM_FIN_ViewHRM_Payroll", "FIN_HRM_Payroll", "View Payroll", "system", "12/4/2025"]
+];
+
+/**
+ * Get ENG data by table name
+ * @param {string} tableName - Name of the ENG table
+ * @returns {Array} Array of data rows for the specified table
+ */
+function getENGDataByTableName(tableName) {
+  switch (tableName) {
+    case "ENG_Forms":
+      return ENG_FORMS_DATA;
+    case "ENG_Views":
+      return ENG_VIEWS_DATA;
+    case "ENG_Dropdowns":
+      return ENG_DROPDOWNS_DATA;
+    case "ENG_Buttons":
+      return ENG_BUTTONS_DATA;
+    case "ENG_Settings":
+      return ENG_SETTINGS_DATA;
+    default:
+      return [];
+  }
+}
+
+/**
+ * Get all ENG table configurations
+ * @returns {Array} Array of objects with tableName and data
+ */
+function getAllENGTableConfigs() {
+  return [
+    { tableName: "ENG_Forms", data: ENG_FORMS_DATA },
+    { tableName: "ENG_Views", data: ENG_VIEWS_DATA },
+    { tableName: "ENG_Dropdowns", data: ENG_DROPDOWNS_DATA },
+    { tableName: "ENG_Buttons", data: ENG_BUTTONS_DATA },
+    { tableName: "ENG_Settings", data: ENG_SETTINGS_DATA }
+  ];
+}
+
+// Export for use in other modules
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    getENGDataByTableName,
+    getAllENGTableConfigs,
+    ENG_FORMS_DATA,
+    ENG_VIEWS_DATA,
+    ENG_DROPDOWNS_DATA,
+    ENG_BUTTONS_DATA,
+    ENG_SETTINGS_DATA
+  };
+}
+
+// Make available globally for Google Apps Script
+if (typeof global !== 'undefined') {
+  global.ENG_Data = {
+    getENGDataByTableName,
+    getAllENGTableConfigs,
+    ENG_FORMS_DATA,
+    ENG_VIEWS_DATA,
+    ENG_DROPDOWNS_DATA,
+    ENG_BUTTONS_DATA,
+    ENG_SETTINGS_DATA
+  };
+}
