@@ -1,3 +1,28 @@
+FRONTEND DESIGN MANUAL: NIJJARA ERP (V3 - FUTURISTIC GLOSS)
+1.0 DESIGN PHILOSOPHY & CONCEPT
+This manual defines the implementation standards for the Nijjara ERP V3 interface.
+
+Theme: "Deep Navy Cyberpunk". A sophisticated dark mode using deep navy blues and greys, accented by neon indicators.
+
+Texture: "3D Glossy Glass". High usage of backdrop-filter: blur, multilayered box-shadows, and "glancing" light animations to create depth.
+
+Orientation: Native RTL (Right-to-Left) layout for Arabic optimization.
+
+Typography: Cairo font family (Weights: 300, 400, 600, 700, 900).
+
+2.0 DESIGN TOKENS (CSS VARIABLES)
+All frontend implementation MUST use these strict CSS variables to ensure consistency.
+
+2.1 Color Palette (Darkest Shades)
+Variable Value Description
+--bg-body #0a0e17 The deepest background color (Very Dark Navy).
+--bg-panel rgba(20, 25, 35, 0.7) Semi-transparent panel color for cards/modals.
+--bg-glass rgba(30, 35, 45, 0.4) Lighter glass layer for overlays.
+--text-main #ffffff Primary text color.
+--text-muted #8fa3bf Secondary text (Blue-Grey).
+
+Export to Sheets
+
 2.2 Module Identity Colors
 Each module is identified by a specific "Deep" color tone. | Module | Variable | Value (Deepest Level) | | :--- | :--- | :--- | | System | --color-sys | #0d47a1 (Deep Navy Blue) | | HRM | --color-hrm | #1b5e20 (Deep Forest Green) | | Projects | --color-prj | #bf8d0a (Deep Gold/Bronze) | | Finance | --color-fin | #b71c1c (Deep Crimson Red) |
 
