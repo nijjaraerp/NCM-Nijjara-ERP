@@ -376,6 +376,49 @@ function fetchViewData(viewId, filterCriteria) {
   }
 }
 
+/**
+ * Fetches a single record by ID for Edit Mode.
+ * Respects Row 4 Data Start rule.
+ * @param {string} sheetName
+ * @param {string} recordId
+ * @return {Object} The record object
+ */
+function getRecordById(sheetName, recordId) {
+  try {
+    const sheet = getSheetByName_(sheetName);
+    if (!sheet) throw new Error(`Sheet ${sheetName} not found`);
+
+    const lastRow = sheet.getLastRow();
+    if (lastRow < 4) return responseError_("Sheet is empty", "NO_DATA");
+
+    const lastCol = sheet.getLastColumn();
+    // Row 1: Keys
+    const headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+
+    // Read IDs from Column 1 (Row 4 to Last)
+    const ids = sheet
+      .getRange(4, 1, lastRow - 3, 1)
+      .getValues()
+      .flat();
+    const rowIndex = ids.indexOf(recordId);
+
+    if (rowIndex === -1) return responseError_("Record not found", "NOT_FOUND");
+
+    const realRow = rowIndex + 4;
+    const rowValues = sheet.getRange(realRow, 1, 1, lastCol).getValues()[0];
+
+    const record = {};
+    headers.forEach((key, i) => {
+      record[key] = rowValues[i];
+    });
+
+    return responseSuccess_(record, "Record Loaded");
+  } catch (e) {
+    logError_("SYSTEM", "GET_RECORD", "SHEET", sheetName, e.message);
+    return responseError_(e.message, "RECORD_ERR");
+  }
+}
+
 /* -------------------------------------------------------------------------
  * SECTION 6: FORM ENGINE (CREATE/UPDATE OPERATIONS)
  * -------------------------------------------------------------------------
@@ -395,19 +438,52 @@ function getFormConfig(formId) {
 
     if (formFields.length === 0) throw new Error(`Form ID ${formId} not found`);
 
+    // --- FIX: Form Arabic Headers (Smart Header Protocol) ---
+    // Identify Target Sheet to fetch dynamic labels
+    const settings = readSheetData_("ENG_Settings");
+    const setting = settings.find(
+      (s) => s.Setting_Key === `FORM_MASTER:${formId}`
+    );
+
+    let labelMap = {};
+    if (setting) {
+      const targetSheetName = setting.Setting_Value;
+      const sheet = getSheetByName_(targetSheetName);
+      if (sheet && sheet.getLastRow() >= 2) {
+        // Read Row 1 (Keys) and Row 2 (Labels)
+        const headers = sheet
+          .getRange(1, 1, 2, sheet.getLastColumn())
+          .getValues();
+        const keys = headers[0];
+        const labels = headers[1];
+        keys.forEach((key, idx) => {
+          labelMap[key] = labels[idx];
+        });
+      }
+    }
+
     const dropdowns = readSheetData_("ENG_Dropdowns");
 
-    // Enrich fields with dropdown options
+    // Enrich fields with dropdown options & Arabic Labels
     const fieldsWithOptions = formFields.map((field) => {
       const fieldObj = { ...field };
+
+      // Inject Arabic Label from Target Sheet if available
+      if (field.Column_Pointer) {
+        const mappedLabel = labelMap[field.Column_Pointer];
+        fieldObj.label_ar = mappedLabel ? mappedLabel : field.Column_Pointer;
+      }
 
       // Handle Dropdowns
       if (field.Field_Type === "Dropdown" && field.DYN_Link) {
         if (field.DYN_Link.startsWith("DD_")) {
           // Static Dropdown from ENG_Dropdowns
+          // --- FIX: Dropdown Logic (Loose comparison) ---
           const options = dropdowns
             .filter(
-              (d) => d.DD_ID === field.DYN_Link && d.DD_Is_Active === true
+              (d) =>
+                d.DD_ID === field.DYN_Link &&
+                String(d.DD_Is_Active).toUpperCase() === "TRUE"
             )
             .sort((a, b) => a.DD_Sort_Order - b.DD_Sort_Order)
             .map((d) => ({ value: d.DD_EN, label: d.DD_AR }));
@@ -811,13 +887,15 @@ function readSheetData_(sheetName) {
   const dataRange = sheet.getRange(4, 1, lastRow - 3, lastCol);
   const values = dataRange.getValues();
 
-  return values.map((row) => {
-    const obj = {};
-    headers.forEach((key, index) => {
-      obj[key] = row[index];
+  return values
+    .filter((row) => row.some((cell) => cell !== "")) // Robustness: Skip empty rows
+    .map((row) => {
+      const obj = {};
+      headers.forEach((key, index) => {
+        obj[key] = row[index];
+      });
+      return obj;
     });
-    return obj;
-  });
 }
 
 /**

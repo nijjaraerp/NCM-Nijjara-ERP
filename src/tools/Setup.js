@@ -87,6 +87,13 @@ function parseMarkdownTable(md) {
   return { headers: headers, rows: rows };
 }
 
+<<<<<<< HEAD
+=======
+// ... (Keep EMBEDDED_SYS_RP_MD content - it is long but I will just reference it or include it) ...
+// Since I am overwriting the file, I must include the full content of EMBEDDED_SYS_RP_MD.
+// I will copy it from the previous read.
+
+>>>>>>> 8e424f545200d24eeb26f51b73367506cbc713f0
 var EMBEDDED_SYS_RP_MD = [
   "| ROL_ID  | PRM_ID | SRP_Scope | SRP_Is_Allowed | SRP_Constraints | SRP_Crt_At | SRP_Crt_By | SRP_Upd_At | SRP_Upd_By |",
   "| ------- | ------ | --------- | -------------- | --------------- | ---------- | ---------- | ---------- | ---------- |",
@@ -341,7 +348,11 @@ var EMBEDDED_SYS_RP_MD = [
   "| R-VIEW  | PRJ    | DELETE    | FALSE          | Active          | 9/9/2025   | SYSTEM     | 9/9/2025   | SYSTEM     |",
   "| R-VIEW  | PRJ    | APPROVE   | FALSE          | Active          | 9/9/2025   | SYSTEM     | 9/9/2025   | SYSTEM     |",
   "| R-VIEW  | PRJ    | EXPORT    | FALSE          | Active          | 9/9/2025   | SYSTEM     | 9/9/2025   | SYSTEM     |",
+<<<<<<< HEAD
   "| R-VIEW  | PRJ    | ADMIN     | FALSE          | Active          | 9/9/2025   | SYSTEM     | 9/9/2025   | SYSTEM     |"
+=======
+  "| R-VIEW  | PRJ    | ADMIN     | FALSE          | Active          | 9/9/2025   | SYSTEM     | 9/9/2025   | SYSTEM     |",
+>>>>>>> 8e424f545200d24eeb26f51b73367506cbc713f0
 ].join("\n");
 
 function seedRolePermissionsFromEmbedded(ss, log, batchId) {
